@@ -43,9 +43,9 @@ _AUTH_FILE="${AUTH_FILE:-$PG_CONFIG_DIR/userlist.txt}"
 
 # Workaround userlist.txt missing issue
 # https://github.com/edoburu/docker-pgbouncer/issues/33
-if [ ! -e "${_AUTH_FILE}" ]; then
-  touch "${_AUTH_FILE}"
-fi
+# if [ ! -e "${_AUTH_FILE}" ]; then
+#   touch "${_AUTH_FILE}"
+# fi
 
 if [ -n "$DB_USER" -a -n "$DB_PASSWORD" -a -e "${_AUTH_FILE}" ] && ! grep -q "^\"$DB_USER\"" "${_AUTH_FILE}"; then
   if [ "$AUTH_TYPE" == "plain" ] || [ "$AUTH_TYPE" == "scram-sha-256" ]; then
